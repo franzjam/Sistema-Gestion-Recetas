@@ -5,13 +5,17 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.IndexedColors;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
-public class CrearArchivoXLS {
+public class CrearReporteEnExcel {
 
-    public CrearArchivoXLS(ArrayList <Alumno> arrayAlumnos) throws IOException{
+    public CrearReporteEnExcel(ArrayList <Alumno> arrayAlumnos) throws IOException{
         HSSFWorkbook libro = new HSSFWorkbook();
         HSSFSheet hoja = libro.createSheet();	
         libro.setSheetName(0, "Alumnos");
@@ -27,7 +31,7 @@ public class CrearArchivoXLS {
         estilo.setFillForegroundColor(IndexedColors.LIGHT_YELLOW.getIndex());
         estilo.setFillPattern(CellStyle.SOLID_FOREGROUND);
 
-        //Se agregan en la cabecera los datos contenidos en "cabeceras" y ademas se le da un estilo a la letra
+        //Se agregan en la cabecera los datos contenidos en el arreglo de string cabeceras y ademas se le da un estilo a la letra
         HSSFRow cabeceraFila = hoja.createRow((short)0);
         for (int i = 0; i < cabeceras.length; ++i) {
             String cabecera = cabeceras[i];
@@ -60,10 +64,35 @@ public class CrearArchivoXLS {
             hoja.autoSizeColumn(i);
         }
         
-        //Se crea el archivo con una ruta especifica y luego se escriben los datos en el .xls
-        FileOutputStream archivo = new FileOutputStream("Universidad Catolica De Gastronomia\\Alumnos.xls");
-        libro.write(archivo);
-        archivo.flush();
-        archivo.close();
+        //Se llama al metodo para guardar archivo
+        guardarArchivoXLS(libro);
+            
+    }//Fin Constructor
+    
+    
+    /**
+     *	Metodo que guarda el archivo .xls el cualquier parte que el usuario indique.
+     *	@param libro	Es el archivo .xls que contiene los datos de todos los alumnos.
+     * */
+    public void guardarArchivoXLS(HSSFWorkbook libro)
+    {
+        JFileChooser fileChooserAlumnos = new JFileChooser();
+       
+        //filtro para ver solo archivos .xls
+        fileChooserAlumnos.addChoosableFileFilter(new FileNameExtensionFilter("todos los archivos *.XLS", "xls","XLS"));
+        int seleccion = fileChooserAlumnos.showSaveDialog(null);
+        
+        try{
+        	//comprueba si ha presionado el boton de aceptar
+            if (seleccion == JFileChooser.APPROVE_OPTION){
+                File archivoJFileChooser = fileChooserAlumnos.getSelectedFile();
+                FileOutputStream archivo = new FileOutputStream(archivoJFileChooser+".xls");
+                libro.write(archivo);          
+                JOptionPane.showMessageDialog(null,"Se guardó correctamente el archivo", "Guardado exitoso!", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null,"Error al guardar el archivo!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
-}
+    
+}//Fin Clase

@@ -16,7 +16,7 @@ public class VentanaMostrarListaAlumnos extends JFrame {
 	private JPanel contentPane;
 
 	public VentanaMostrarListaAlumnos(final ArrayList<Alumno> arrayUsuarioEstandar, final VentanaDocente ventanaAnterior) {
-		
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 370, 439);
 		contentPane = new JPanel();
@@ -63,10 +63,9 @@ public class VentanaMostrarListaAlumnos extends JFrame {
 		//Se crea un .xls con los datos de los alumnos
 		JButton btnCrearArchivoXls = new JButton("Crear archivo XLS");
 		btnCrearArchivoXls.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				//implementar despues un JFileChooser para elegir ruta y nombre archivo
+			public void actionPerformed(ActionEvent arg0) {	
 				try {
-					CrearArchivoXLS archivoXLS = new CrearArchivoXLS(arrayUsuarioEstandar);
+					CrearReporteEnExcel archivoXLS = new CrearReporteEnExcel(arrayUsuarioEstandar);
 				} catch (IOException e) {
 					e.printStackTrace();
 				}

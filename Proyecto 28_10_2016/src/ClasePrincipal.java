@@ -3,7 +3,7 @@
  *  @author Pedro Morales
  *  @author Sebastian Sandoval
  *  @author Israel Ogas
- *  @version 1
+ *  @version Parte B
  * 
  * ********************************************************
  * 							USUARIOS
@@ -15,17 +15,12 @@
  * 	RUT : 80186894
  *  PASS : 49868
  * 
- * *******************************************************
+ * *********************************************************
  * 
  * 	CORREO : projectGRDC@gmail.com
  *	PASS : GRDCproject1234
  * 
- * ********************************************************
- * 
- * 		VERIFICAR existeUsuario( //VERIFICAR PARAMETROS  )
- * 		
- * 
- *********************************************************/
+ * *********************************************************/
 
 // Crear clase archivo y ver todo lo de archivos (Clase Universidad)
 public class ClasePrincipal 

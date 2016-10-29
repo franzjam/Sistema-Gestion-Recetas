@@ -1,6 +1,4 @@
-import java.io.IOException;
 import java.util.ArrayList;
-
 import javax.swing.JPasswordField;
 
 public class ListaDocentes {

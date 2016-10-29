@@ -1,6 +1,5 @@
 import java.awt.Dimension;
 import java.awt.Toolkit;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -8,11 +7,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.SwingConstants;
@@ -32,10 +28,6 @@ public class VentanaPrincipal extends JFrame {
 	
 	public VentanaPrincipal(final Universidad universidad)  
 	{
-		
-		
-		
-	
 		
 		setTitle("Prototipo");	
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
